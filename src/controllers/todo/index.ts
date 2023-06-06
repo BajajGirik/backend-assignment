@@ -52,8 +52,8 @@ todoRouter.put('/:id', async (req: AuthenticatedRequest, res: Response, next: Ne
 
 todoRouter.delete('/:id', async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   try {
-      const todos = await TodoService.delete(req.params.id, req.userId!);
-      res.status(200).send(todos);
+      await TodoService.delete(req.params.id, req.userId!);
+      res.sendStatus(200);
   } catch (err) {
       next(err);
   }
