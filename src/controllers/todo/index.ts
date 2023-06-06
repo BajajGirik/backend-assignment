@@ -42,8 +42,8 @@ todoRouter.put('/:id', async (req: AuthenticatedRequest, res: Response, next: Ne
   }
 
   try {
-      const todos = await TodoService.update(req.params.id, req.userId!, body);
-      res.status(200).send(todos);
+      await TodoService.update(req.params.id, req.userId!, body);
+      res.sendStatus(200);
   } catch (err) {
       next(err);
   }
