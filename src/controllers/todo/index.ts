@@ -38,7 +38,7 @@ todoRouter.put('/:id', async (req: AuthenticatedRequest, res: Response, next: Ne
   // TODO: add JOI request validations for simplification
   const body: IUpdateTodoRequest = req.body;
   if (!body.isCompleted && !body.title && !body.description) {
-      return next(new CustomError("Cannot have an empty request body"));
+      return next(new CustomError("Cannot have an empty request body", 400));
   }
 
   try {
