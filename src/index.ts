@@ -19,21 +19,21 @@ app.use((req, _res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get( "/api/v1/ping", async (_req, res) => {
-        res.status(200).send("I am Online!");
-    }
+app.get("/api/v1/ping", async (_req, res) => {
+    res.status(200).send("I am Online!");
+}
 );
 
-app.use("api/v1/user", userRouter);
-app.use("api/v1/todos", decodeJwtMiddleware, todoRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/todos", decodeJwtMiddleware, todoRouter);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.log("Error Handling Middleware called")
-  console.error(err);
-  if (err instanceof CustomError) {
-      return sendErrorToClient(res, err);
-  }
-  next(err);
+    console.log("Error Handling Middleware called")
+    console.error(err);
+    if (err instanceof CustomError) {
+        return sendErrorToClient(res, err);
+    }
+    next(err);
 })
 
 app.listen(config.port, () => {

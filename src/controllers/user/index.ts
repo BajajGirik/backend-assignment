@@ -34,7 +34,7 @@ userRouter.post('/login', async (req, res, next) => {
     }
 })
 
-userRouter.post('register-dummy-user', async (_req, res, next) => {
+userRouter.post('/register-dummy-user', async (_req, res, next) => {
     const username = "test123";
     const password = "test123";
 
